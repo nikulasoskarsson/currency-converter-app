@@ -12,12 +12,8 @@ const Header = () => {
         alignItems: 'center',
       }}
     >
-      <Text style={{ fontSize: '1.4rem', color: '#444' }}>
-        Currency Converted
-      </Text>
-      <Text style={{ fontSize: '1.2rem', color: 'pink' }}>
-        Convert your currency
-      </Text>
+      <Text style={{ fontSize: 22, color: '#444' }}>Currency Converted</Text>
+      <Text style={{ fontSize: 18, color: 'pink' }}>Convert your currency</Text>
     </View>
   )
 }

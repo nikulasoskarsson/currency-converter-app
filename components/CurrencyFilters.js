@@ -18,13 +18,39 @@ const CurrencyFilters = ({ type }) => {
         }
       />
       <View>
-        {type === 'from'
-          ? currencyStore.fromFilteredCurrencies.map((currency) => (
-              <TouchableOpacity>{currency}</TouchableOpacity>
-            ))
-          : currencyStore.toFilteredCurrencies.map((currency) => (
-              <TouchableOpacity>{currency}</TouchableOpacity>
+        {type === 'from' ? (
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+            }}
+          >
+            {currencyStore.fromFilteredCurrencies.map((currency) => (
+              <TouchableOpacity
+                key={currency}
+                style={{
+                  marginVertical: 3.5,
+                  marginHorizontal: 1.5,
+                  width: 80,
+                  height: 40,
+                  backgroundColor: 'blue',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <Text style={{ color: '#fff' }}>{currency}</Text>
+              </TouchableOpacity>
             ))}
+          </View>
+        ) : (
+          currencyStore.toFilteredCurrencies.map((currency) => (
+            <TouchableOpacity key={currency}>
+              <Text>{currency}</Text>
+            </TouchableOpacity>
+          ))
+        )}
       </View>
     </View>
   ))

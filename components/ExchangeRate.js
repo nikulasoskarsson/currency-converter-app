@@ -11,7 +11,14 @@ const ExchangeRate = () => {
   }, [])
   return useObserver(() => (
     <View>
-      <Text>{currencyStore.exchangeRate}</Text>
+      <Text
+        style={{
+          fontSize: 18,
+          textAlign: 'center',
+          marginTop: 26,
+          fontWeight: 'bold',
+        }}
+      >{`${currencyStore.amount}${currencyStore.selectedCurrencyFrom} =  ${currencyStore.exchangeRate}${currencyStore.selectedCurrencyTo}`}</Text>
     </View>
   ))
 }
