@@ -29,9 +29,13 @@ const CurrencyDropdown = ({ type }) => {
           dropDownMaxHeight={250}
           searchable={true}
           onChangeItem={(item) => {
-            type === 'from'
-              ? currencyStore.setSelectedCurrencyFrom(item)
-              : currencyStore.setSelectedCurrencyTo(item)
+            if (type === 'from') {
+              currencyStore.setSelectedCurrencyFrom(item)
+              currencyStore.getExchangeRate()
+            } else {
+              currencyStore.setSelectedCurrencyTo(item)
+              currencyStore.getExchangeRate()
+            }
           }}
         />
       </View>

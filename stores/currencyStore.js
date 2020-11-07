@@ -79,7 +79,7 @@ export function createCurrencyStore() {
       )
       const res = await conn.json()
       console.log(res)
-      this.exchangeRate = 5
+      this.exchangeRate = res.rates[this.selectedCurrencyTo]
     },
   }
 }
