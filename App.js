@@ -12,6 +12,7 @@ import {
 import CurrencyDropdown from './components/CurrencyDropdown'
 import Header from './components/Header'
 import ExchangeRate from './components/ExchangeRate'
+import CurrencyFilters from './components/CurrencyFilters'
 
 export default function App() {
   return (
@@ -19,7 +20,9 @@ export default function App() {
       <View>
         <Header />
         <CurrencyDropdown type='from' />
+        <CurrencyFilters type='from' />
         <CurrencyDropdown type='to' />
+        <CurrencyFilters type='to' />
         <ExchangeRate />
       </View>
     </CurrencyProvider>

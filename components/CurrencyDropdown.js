@@ -27,7 +27,6 @@ const CurrencyDropdown = ({ type }) => {
           }}
           dropDownStyle={{ backgroundColor: '#fafafa', height: 250 }}
           dropDownMaxHeight={250}
-          searchable={true}
           onChangeItem={(item) => {
             if (type === 'from') {
               currencyStore.setSelectedCurrencyFrom(item)

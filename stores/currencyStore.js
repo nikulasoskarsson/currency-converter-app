@@ -81,5 +81,26 @@ export function createCurrencyStore() {
       console.log(res)
       this.exchangeRate = res.rates[this.selectedCurrencyTo]
     },
+    setFromFilters(string) {
+      this.fromFilterString = string
+      if (this.fromFilterString !== '') {
+        this.fromFilteredCurrencies = this.currencies.filter((currency) =>
+          currency.toLowerCase().includes(string.toLowerCase())
+        )
+      } else {
+        this.fromFilteredCurrencies = []
+      }
+    },
+    setToFilters(string) {
+      this.toFilterString = string
+
+      if (this.toFilterString !== '') {
+        this.toFilteredCurrencies = this.currencies.filter((currency) =>
+          currency.toLowerCase().includes(string.toLowerCase())
+        )
+      } else {
+        this.toFilteredCurrencies = []
+      }
+    },
   }
 }
