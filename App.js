@@ -10,12 +10,17 @@ import {
   Button,
 } from 'react-native'
 import CurrencyDropdown from './components/CurrencyDropdown'
+import Header from './components/Header'
+import ExchangeRate from './components/ExchangeRate'
 
 export default function App() {
   return (
     <CurrencyProvider>
       <View>
-        <CurrencyDropdown />
+        <Header />
+        <CurrencyDropdown type='from' />
+        <CurrencyDropdown type='to' />
+        <ExchangeRate />
       </View>
     </CurrencyProvider>
   )

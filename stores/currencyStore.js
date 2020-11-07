@@ -68,5 +68,18 @@ export function createCurrencyStore() {
     setSelectedCurrencyFrom(currency) {
       this.selectedCurrencyFrom = currency
     },
+
+    setSelectedCurrencyTo(currency) {
+      this.selectedCurrencyTo = currency
+    },
+
+    async getExchangeRate() {
+      const conn = await fetch(
+        `https://api.exchangerate-api.com/v4/latest/${this.selectedCurrencyFrom}`
+      )
+      const res = await conn.json()
+      console.log(res)
+      this.exchangeRate = 5
+    },
   }
 }

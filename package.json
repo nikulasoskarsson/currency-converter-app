@@ -21,5 +21,6 @@
   "devDependencies": {
     "@babel/core": "~7.9.0"
   },
-  "private": true
+  "private": true,
+  "proxy": "https://api.exchangerate-api.com/v4/latest/"
 }
