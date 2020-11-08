@@ -2,21 +2,39 @@ import React from 'react'
 import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import { useCurrencyStore } from '../context/CurrencyContext'
 import { useObserver } from 'mobx-react'
+import { FontAwesome } from '@expo/vector-icons'
 
 const CurrencyFilters = ({ type }) => {
   const currencyStore = useCurrencyStore()
 
   return useObserver(() => (
-    <View>
-      <TextInput
-        style={{ height: 40, borderBottomWidth: 1.0, borderColor: '#444' }}
-        placeholder='Search currencies'
-        onChangeText={(text) =>
-          type === 'from'
-            ? currencyStore.setFromFilters(text)
-            : currencyStore.setToFilters(text)
-        }
-      />
+    <View style={{ marginBottom: 26 }}>
+      <View
+        style={{
+          height: 40,
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          borderWidth: 1,
+          borderColor: '#444',
+          paddingHorizontal: 8,
+        }}
+      >
+        <TextInput
+          style={{
+            height: '100%',
+          }}
+          placeholder='Search currencies'
+          onChangeText={(text) =>
+            type === 'from'
+              ? currencyStore.setFromFilters(text)
+              : currencyStore.setToFilters(text)
+          }
+        />
+        <FontAwesome name='search' size={16} color='#444' />
+      </View>
       <View>
         {type === 'from' ? (
           <View
