@@ -1,5 +1,6 @@
+import { makeAutoObservable, runInAction } from 'mobx'
 export function createCurrencyStore() {
-  return {
+  return makeAutoObservable({
     currencies: [
       'AED',
       'ARS',
@@ -78,8 +79,10 @@ export function createCurrencyStore() {
         `https://api.exchangerate-api.com/v4/latest/${this.selectedCurrencyFrom}`
       )
       const res = await conn.json()
-      console.log(res)
-      this.exchangeRate = res.rates[this.selectedCurrencyTo]
+      runInAction(
+        () =>
+          (this.exchangeRate = res.rates[this.selectedCurrencyTo] * this.amount)
+      )
     },
     setFromFilters(string) {
       this.fromFilterString = string
@@ -102,5 +105,8 @@ export function createCurrencyStore() {
         this.toFilteredCurrencies = []
       }
     },
-  }
+    setAmount(amount) {
+      this.amount = amount
+    },
+  })
 }

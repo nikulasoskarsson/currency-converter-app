@@ -16,7 +16,6 @@ const ExchangeRate = () => {
           fontSize: 18,
           textAlign: 'center',
           marginTop: 26,
-          fontWeight: 'bold',
         }}
       >{`${currencyStore.amount}${currencyStore.selectedCurrencyFrom} =  ${currencyStore.exchangeRate}${currencyStore.selectedCurrencyTo}`}</Text>
     </View>
