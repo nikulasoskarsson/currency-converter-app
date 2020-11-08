@@ -1,6 +1,5 @@
 import React, { createContext, useContext } from 'react'
 import { CurrencyProvider } from './context/CurrencyContext'
-
 import {
   View,
   KeyboardAvoidingView,
@@ -33,7 +32,7 @@ export default function App() {
                 <CurrencyFilters type='from' />
                 <CurrencyDropdown type='to' />
                 <CurrencyFilters type='to' />
-                <ExchangeRate />
+                <ExchangeRate style={{ marginTop: 400 }} />
               </View>
             </TouchableWithoutFeedback>
           </SafeAreaView>

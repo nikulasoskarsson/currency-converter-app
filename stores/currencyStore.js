@@ -75,13 +75,17 @@ export function createCurrencyStore() {
     },
 
     async getExchangeRate() {
+      this.setLoading() // testing
       const conn = await fetch(
         `https://api.exchangerate-api.com/v4/latest/${this.selectedCurrencyFrom}`
       )
       const res = await conn.json()
       runInAction(
-        () =>
-          (this.exchangeRate = res.rates[this.selectedCurrencyTo] * this.amount)
+        () => (
+          (this.exchangeRate =
+            res.rates[this.selectedCurrencyTo] * this.amount),
+          (this.loading = false)
+        )
       )
     },
     setFromFilters(string) {
@@ -115,6 +119,9 @@ export function createCurrencyStore() {
     },
     setAmount(amount) {
       this.amount = amount
+    },
+    setLoading() {
+      this.loading = true
     },
   })
 }
