@@ -32,6 +32,11 @@ const CurrencyFilters = ({ type }) => {
               ? currencyStore.setFromFilters(text)
               : currencyStore.setToFilters(text)
           }
+          value={
+            type === 'from'
+              ? currencyStore.fromFilterString
+              : currencyStore.toFilterString
+          }
         />
         <FontAwesome name='search' size={16} color='#444' />
       </View>
@@ -57,17 +62,47 @@ const CurrencyFilters = ({ type }) => {
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}
+                onPress={() => {
+                  currencyStore.setSelectedCurrencyFrom(currency)
+                  currencyStore.getExchangeRate()
+                  currencyStore.clearFromFilters()
+                }}
               >
                 <Text style={{ color: '#fff' }}>{currency}</Text>
               </TouchableOpacity>
             ))}
           </View>
         ) : (
-          currencyStore.toFilteredCurrencies.map((currency) => (
-            <TouchableOpacity key={currency}>
-              <Text>{currency}</Text>
-            </TouchableOpacity>
-          ))
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+            }}
+          >
+            {currencyStore.toFilteredCurrencies.map((currency) => (
+              <TouchableOpacity
+                key={currency}
+                style={{
+                  marginVertical: 3.5,
+                  marginHorizontal: 1.5,
+                  width: 80,
+                  height: 40,
+                  backgroundColor: 'blue',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                onPress={() => {
+                  currencyStore.setSelectedCurrencyTo(currency)
+                  currencyStore.getExchangeRate()
+                  currencyStore.clearToFilters()
+                }}
+              >
+                <Text style={{ color: '#fff' }}>{currency}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
         )}
       </View>
     </View>

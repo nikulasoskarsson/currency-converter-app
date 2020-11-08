@@ -105,6 +105,14 @@ export function createCurrencyStore() {
         this.toFilteredCurrencies = []
       }
     },
+    clearFromFilters() {
+      this.fromFilterString = ''
+      this.fromFilteredCurrencies = []
+    },
+    clearToFilters() {
+      this.toFilterString = ''
+      this.toFilteredCurrencies = []
+    },
     setAmount(amount) {
       this.amount = amount
     },
